@@ -15,7 +15,7 @@ RUN mkdir -p /config \
 # ADD CDH Repository
 ADD cloudera-cdh6.repo /etc/yum.repos.d/
 
-ADD /etc/flume.conf /config/
+#ADD /etc/flume.conf /config/
 ADD /etc/flume-ng-agent /config/
 
 
@@ -49,7 +49,7 @@ RUN rpm --import https://archive.cloudera.com/cdh6/6.3.2/redhat7/yum/RPM-GPG-KEY
 
 
 RUN echo "Configuring Flume" \
- && ln -sf /config/flume.conf /etc/flume-ng/conf/flume.conf  \
+# && ln -sf /config/flume.conf /etc/flume-ng/conf/flume.conf  \
  && ln -sf /config/flume-ng-agent /etc/default/flume-ng-agent  \
  && wget -O /usr/lib/flume-ng/lib/json-20160810.jar https://repo1.maven.org/maven2/org/json/json/20160810/json-20160810.jar \
  && wget -O /usr/lib/flume-ng/lib/kudu-flume-sink-1.9.0-cdh6.2.1.jar https://repository.cloudera.com/artifactory/cloudera-repos/org/apache/kudu/kudu-flume-sink/1.9.0-cdh6.2.1/kudu-flume-sink-1.9.0-cdh6.2.1.jar \
